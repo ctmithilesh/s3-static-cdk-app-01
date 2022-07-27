@@ -7,12 +7,12 @@ export class S3StaticCdkApp01Stack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const pandasWebsiteBucket = new s3.Bucket(this, 'pandasWebsiteBucket', {
+    const pandasWebsiteBucket = new s3.Bucket(this, 'PandaWebsite', {
       websiteIndexDocument: 'index.html',
       publicReadAccess: true,
     });
     
-    new s3Deployment.BucketDeployment(this, 'pandasWebsiteBucket', {
+    new s3Deployment.BucketDeployment(this, 'DeployWebsite', {
       sources: [s3Deployment.Source.asset('./website')],
       destinationBucket: pandasWebsiteBucket,
      //destinationKeyPrefix: 'web/static', // optional prefix in destination bucket
